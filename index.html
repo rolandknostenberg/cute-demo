@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Arina Antonjana — kosmetoloģe Rīgā | Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf7f3; --card:#ffffff; --ink:#2a2220; --muted:#7d706a;
+    --rose:#c48a74; --rose-dark:#9a5f4a; --blush:#f3e4da; --sand:#ead8cb; --deep:#3a2a25;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Manrope",Arial,sans-serif;font-weight:300;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  .demo-bar{background:var(--deep);color:var(--blush);text-align:center;font-size:12.5px;padding:8px 12px;letter-spacing:.3px}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,247,243,.88);backdrop-filter:blur(10px);transition:box-shadow .3s}
+  header.scrolled{box-shadow:0 6px 24px rgba(58,42,37,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:"Cormorant Garamond",serif;font-size:30px;letter-spacing:6px}
+  .logo span{color:var(--rose)}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:14.5px}
+  .nav-links a{color:var(--muted);position:relative}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--rose);transition:width .3s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .lang{display:flex;border:1px solid var(--rose);border-radius:30px;overflow:hidden}
+  .lang button{border:0;background:none;padding:6px 14px;cursor:pointer;font:600 12px "Manrope";color:var(--rose-dark);letter-spacing:1px}
+  .lang button.active{background:var(--rose);color:#fff}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--rose);color:#fff;padding:15px 32px;border-radius:40px;font-weight:600;font-size:15px;transition:transform .25s,background .25s,box-shadow .25s;box-shadow:0 10px 26px rgba(196,138,116,.35)}
+  .btn:hover{background:var(--rose-dark);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--rose-dark);border:1px solid var(--rose);box-shadow:none}
+  .btn-ghost:hover{background:var(--blush);color:var(--rose-dark)}
+
+  /* HERO */
+  .hero{position:relative;padding:70px 0 90px}
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1}
+  .blob.b1{width:420px;height:420px;background:#f0cdbd;top:-80px;right:-60px;animation:float 12s ease-in-out infinite}
+  .blob.b2{width:300px;height:300px;background:#efe0c9;bottom:-40px;left:-80px;animation:float 14s ease-in-out infinite reverse}
+  @keyframes float{50%{transform:translate(30px,25px)}}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose-dark);margin-bottom:22px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--rose)}
+  .hero h1{font-size:64px;line-height:1.05;margin-bottom:24px}
+  .hero h1 em{color:var(--rose);font-style:italic}
+  .hero p.sub{color:var(--muted);font-size:18px;max-width:520px;margin-bottom:34px}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .badges{display:flex;gap:26px;margin-top:44px;flex-wrap:wrap}
+  .badge{display:flex;align-items:center;gap:12px;font-size:14px}
+  .badge svg{flex:none}
+  .hero-visual{position:relative}
+  .arch{aspect-ratio:4/5;border-radius:260px 260px 28px 28px;background:linear-gradient(165deg,#f3ded2 0%,#d8a891 55%,#b27561 100%);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:30px;color:rgba(255,255,255,.9);font-size:13.5px}
+  .arch::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.45);border-radius:240px 240px 18px 18px}
+  .float-card{position:absolute;background:var(--card);border-radius:18px;padding:16px 20px;box-shadow:0 18px 40px rgba(58,42,37,.12);font-size:13.5px;display:flex;align-items:center;gap:12px;animation:bob 6s ease-in-out infinite}
+  .float-card b{display:block;font-weight:600;font-size:14px}
+  .float-card.fc1{left:-40px;top:22%}
+  .float-card.fc2{right:-26px;bottom:14%;animation-delay:-3s}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  .dot{width:38px;height:38px;border-radius:50%;background:var(--blush);display:flex;align-items:center;justify-content:center;flex:none}
+
+  /* MARQUEE */
+  .marquee{background:var(--deep);color:var(--blush);overflow:hidden;padding:18px 0}
+  .track{display:flex;gap:50px;width:max-content;animation:scroll 28s linear infinite;font-family:"Cormorant Garamond",serif;font-size:26px;font-style:italic}
+  .track span::after{content:"✦";margin-left:50px;color:var(--rose);font-style:normal;font-size:16px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{padding:100px 0}
+  .head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .head .eyebrow{justify-content:center}
+  .head .eyebrow::after{content:"";width:34px;height:1px;background:var(--rose)}
+  h2{font-size:48px;line-height:1.1;margin-bottom:14px}
+  .head p{color:var(--muted)}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+  .about-photo{aspect-ratio:3/4;border-radius:28px;background:linear-gradient(200deg,#efe0d4,#cf9d86);position:relative;display:flex;align-items:flex-end;padding:26px;color:#fff;font-size:13.5px}
+  .about-photo .stamp{position:absolute;right:-28px;top:34px;width:120px;height:120px;border-radius:50%;background:var(--card);box-shadow:0 14px 34px rgba(58,42,37,.12);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;line-height:1.3;color:var(--rose-dark);font-weight:600;padding:14px}
+  .about-text h2{text-align:left}
+  .about-text .quote{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:26px;line-height:1.35;color:var(--rose-dark);border-left:2px solid var(--rose);padding-left:20px;margin:24px 0 34px}
+  .facts{display:grid;gap:18px}
+  .fact{display:flex;gap:18px;align-items:flex-start;background:var(--card);padding:20px 22px;border-radius:18px;transition:transform .3s,box-shadow .3s}
+  .fact:hover{transform:translateX(6px);box-shadow:0 12px 30px rgba(58,42,37,.07)}
+  .fact b{display:block;font-weight:600;margin-bottom:2px}
+  .fact p{color:var(--muted);font-size:14.5px}
+
+  /* SERVICES */
+  .services-bg{background:linear-gradient(180deg,var(--bg),var(--blush))}
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .service{background:var(--card);border-radius:26px;padding:36px 30px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+  .service::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:var(--blush);transition:transform .5s}
+  .service:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(58,42,37,.12)}
+  .service:hover::after{transform:scale(1.6)}
+  .service > *{position:relative;z-index:1}
+  .icon{width:58px;height:58px;border-radius:18px;background:var(--blush);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+  .service h3{font-size:30px;margin-bottom:10px}
+  .service p{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .service ul{list-style:none;font-size:14.5px;margin-bottom:24px}
+  .service li{padding:6px 0;border-bottom:1px dashed var(--sand)}
+  .service li::before{content:"✦ ";color:var(--rose)}
+  .price{font-size:13.5px;font-weight:600;color:var(--rose-dark);letter-spacing:.3px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+  .steps::before{content:"";position:absolute;top:34px;left:12%;right:12%;height:1px;background:repeating-linear-gradient(90deg,var(--rose) 0 6px,transparent 6px 12px)}
+  .step{text-align:center;position:relative}
+  .step .n{width:68px;height:68px;border-radius:50%;background:var(--card);border:1px solid var(--rose);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--rose-dark);transition:background .3s,color .3s}
+  .step:hover .n{background:var(--rose);color:#fff}
+  .step h3{font-size:24px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:18px}
+  .g{border-radius:22px;display:flex;align-items:flex-end;padding:20px;color:#fff;font-size:13.5px;position:relative;overflow:hidden}
+  .g::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,34,32,.35),transparent 50%)}
+  .g span{position:relative}
+  .g1{grid-row:span 2;background:linear-gradient(160deg,#f1d6c8,#b87a64)}
+  .g2{background:linear-gradient(160deg,#efe2d2,#c9a48e)}
+  .g3{background:linear-gradient(160deg,#e9cfc6,#a96f62)}
+  .g4{grid-column:span 2;background:linear-gradient(110deg,#d9b5a3,#8f5a46)}
+
+  /* FAQ */
+  .faq{max-width:780px;margin:0 auto}
+  details{background:var(--card);border-radius:18px;padding:22px 26px;margin-bottom:14px;transition:box-shadow .3s}
+  details[open]{box-shadow:0 14px 34px rgba(58,42,37,.08)}
+  summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:24px;color:var(--rose);transition:transform .3s;font-weight:300}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);margin-top:12px;font-size:15px}
+
+  /* CTA */
+  .cta{background:linear-gradient(120deg,#3a2a25,#6b4337 55%,#a8705b);color:#fff;border-radius:34px;padding:70px 50px;text-align:center;position:relative;overflow:hidden}
+  .cta::before,.cta::after{content:"";position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+  .cta::before{width:380px;height:380px;left:-120px;top:-160px}
+  .cta::after{width:300px;height:300px;right:-90px;bottom:-150px}
+  .cta h2{font-size:52px;color:#fff}
+  .cta p{opacity:.85;max-width:520px;margin:0 auto 32px}
+  .cta .btn{background:#fff;color:var(--rose-dark);box-shadow:none}
+  .cta .btn:hover{background:var(--blush)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:stretch}
+  .clist{list-style:none;margin:28px 0 34px}
+  .clist li{display:flex;gap:16px;align-items:center;margin-bottom:22px}
+  .clist small{display:block;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px}
+  .clist a:hover{color:var(--rose-dark)}
+  iframe{width:100%;height:100%;min-height:380px;border:0;border-radius:28px;filter:grayscale(.3) sepia(.15)}
+
+  footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--sand);margin-top:80px}
+  footer .logo{font-size:24px;display:block;margin-bottom:8px;color:var(--ink)}
+
+  .wa{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero h1{font-size:44px}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-visual{max-width:360px;margin:20px auto 0}
+    .float-card.fc1{left:-10px}.float-card.fc2{right:-10px}
+    .services{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+    .steps::before{display:none}
+    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+    .g1{grid-row:span 1;grid-column:span 2}
+    .nav-links a{display:none}
+    h2,.cta h2{font-size:38px}
+    .about-photo .stamp{right:10px}
+    .cta{padding:50px 26px}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-bar" data-lv="Demo koncepcija — tā nav oficiālā mājaslapa." data-ru="Демо-концепция — это не официальный сайт."></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo">CUT<span>É</span></a>
+    <nav class="nav-links">
+      <a href="#about" data-lv="Par mani" data-ru="Обо мне"></a>
+      <a href="#services" data-lv="Procedūras" data-ru="Процедуры"></a>
+      <a href="#steps" data-lv="Vizīte" data-ru="Визит"></a>
+      <a href="#faq" data-lv="Jautājumi" data-ru="Вопросы"></a>
+      <a href="#contact" data-lv="Kontakti" data-ru="Контакты"></a>
+      <div class="lang">
+        <button id="btn-lv" onclick="setLang('lv')">LV</button>
+        <button id="btn-ru" onclick="setLang('ru')">RU</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow" data-lv="Kosmetoloģe Rīgā" data-ru="Косметолог в Риге"></div>
+      <h1 data-html-lv="Veselīga āda —<br><em>dabisks</em> skaistums" data-html-ru="Здоровая кожа —<br><em>естественная</em> красота"></h1>
+      <p class="sub" data-lv="Aparātu procedūras, pīlingi un sejas kopšana no kosmetoloģes ar medicīnisko izglītību. Katra programma — tieši jūsu ādai." data-ru="Аппаратные процедуры, пилинги и уходы от косметолога с медицинским образованием. Каждая программа — именно для вашей кожи."></p>
+      <div class="ctas">
+        <a class="btn" href="https://wa.me/37125984948" target="_blank"><span data-lv="Pierakstīties" data-ru="Записаться"></span> →</a>
+        <a class="btn btn-ghost" href="#services" data-lv="Skatīt procedūras" data-ru="Смотреть процедуры"></a>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c48a74" stroke-width="1.4"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span data-lv="Medicīniskā izglītība" data-ru="Медицинское образование"></span>
+        </div>
+        <div class="badge">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c48a74" stroke-width="1.4"><circle cx="12" cy="9" r="6"/><path d="M8.5 14l-1.5 7 5-3 5 3-1.5-7"/></svg>
+          <span data-lv="Reviderm trenere" data-ru="Тренер Reviderm"></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="arch" data-lv="Šeit būs Arinas foto" data-ru="Здесь будет фото Арины"></div>
+      <div class="float-card fc1">
+        <div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+        <div><b data-lv="Konsultācija" data-ru="Консультация"></b><span data-lv="pirms katras procedūras" data-ru="перед каждой процедурой"></span></div>
+      </div>
+      <div class="float-card fc2">
+        <div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div>
+        <div><b data-lv="Profesionālā kosmētika" data-ru="Проф. косметика"></b><span>Reviderm</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="track" id="track"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <span data-lv="Foto no kabineta" data-ru="Фото из кабинета"></span>
+      <div class="stamp" data-lv="Medicīniska pieeja skaistumam" data-ru="Медицинский подход к красоте"></div>
+    </div>
+    <div class="about-text reveal">
+      <div class="eyebrow" data-lv="Par mani" data-ru="Обо мне"></div>
+      <h2 data-lv="Arina Antonjana" data-ru="Арина Антонян"></h2>
+      <div class="quote" data-lv="“Es runāju par ādu, skaistumu un veselību vienkāršos vārdos — un procedūru izvēlos pēc konsultācijas, nevis pēc modes.”" data-ru="«Я говорю о коже, красоте и здоровье простыми словами — и подбираю процедуру после консультации, а не по моде.»"></div>
+      <div class="facts">
+        <div class="fact">
+          <div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2zM8 7h6"/></svg></div>
+          <div><b data-lv="Medicīniskā izglītība" data-ru="Медицинское образование"></b><p data-lv="Droša pieeja un izpratne par to, kā āda darbojas." data-ru="Безопасный подход и понимание того, как работает кожа."></p></div>
+        </div>
+        <div class="fact">
+          <div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M17 11l2 2 3-3"/></svg></div>
+          <div><b data-lv="Reviderm trenere" data-ru="Тренер бренда Reviderm"></b><p data-lv="Apmācu citus speciālistus darbā ar profesionālo kosmētiku." data-ru="Обучаю других специалистов работе с профессиональной косметикой."></p></div>
+        </div>
+        <div class="fact">
+          <div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><b data-lv="Individuāla programma" data-ru="Индивидуальная программа"></b><p data-lv="Veidota jūsu ādas tipam, vecumam un mērķim." data-ru="Составляется под ваш тип кожи, возраст и цель."></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow" data-lv="Procedūras" data-ru="Процедуры"></div>
+      <h2 data-lv="Ko es varu jums piedāvāt" data-ru="Что я могу вам предложить"></h2>
+      <p data-lv="Precīzu cenu un procedūru kursu noteiksim konsultācijā." data-ru="Точную цену и курс процедур определим на консультации."></p>
+    </div>
+    <div class="services">
+      <div class="service reveal">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.5"><rect x="4" y="3" width="10" height="18" rx="3"/><path d="M14 8h3a3 3 0 0 1 0 6h-3M9 7v4"/></svg></div>
+        <h3 data-lv="Aparātu procedūras" data-ru="Аппаратные процедуры"></h3>
+        <p data-lv="Mūsdienīgas metodes ādas atjaunošanai un tonusam." data-ru="Современные методы для обновления и тонуса кожи."></p>
+        <ul>
+          <li data-lv="Ādas tonusam un elastībai" data-ru="Для тонуса и упругости"></li>
+          <li data-lv="Dziļai attīrīšanai" data-ru="Для глубокого очищения"></li>
+          <li data-lv="Svaigam, atpūtušam izskatam" data-ru="Для свежего, отдохнувшего вида"></li>
+        </ul>
+        <div class="price" data-lv="Cena — pēc konsultācijas" data-ru="Цена — после консультации"></div>
+      </div>
+      <div class="service reveal">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.5"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
+        <h3 data-lv="Pīlingi" data-ru="Пилинги"></h3>
+        <p data-lv="Vienmērīgs tonis un gludāka āda." data-ru="Ровный тон и более гладкая кожа."></p>
+        <ul>
+          <li data-lv="Pigmentācijai" data-ru="При пигментации"></li>
+          <li data-lv="Pēcakne pēdām" data-ru="При следах постакне"></li>
+          <li data-lv="Ādas atjaunošanai" data-ru="Для обновления кожи"></li>
+        </ul>
+        <div class="price" data-lv="Cena — pēc konsultācijas" data-ru="Цена — после консультации"></div>
+      </div>
+      <div class="service reveal">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.5"><path d="M12 21c-5 0-8-3.5-8-8 4 0 8 3.5 8 8zM12 21c5 0 8-3.5 8-8-4 0-8 3.5-8 8zM12 13V3"/></svg></div>
+        <h3 data-lv="Sejas kopšana" data-ru="Уходы за лицом"></h3>
+        <p data-lv="Mitrināšana, barošana un relaksācija." data-ru="Увлажнение, питание и расслабление."></p>
+        <ul>
+          <li data-lv="Sausai un jutīgai ādai" data-ru="Для сухой и чувствительной кожи"></li>
+          <li data-lv="Pirms svarīga notikuma" data-ru="Перед важным событием"></li>
+          <li data-lv="Regulārai kopšanai" data-ru="Для регулярного ухода"></li>
+        </ul>
+        <div class="price" data-lv="Cena — pēc konsultācijas" data-ru="Цена — после консультации"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="steps">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow" data-lv="Kā notiek vizīte" data-ru="Как проходит визит"></div>
+      <h2 data-lv="Četri vienkārši soļi" data-ru="Четыре простых шага"></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3 data-lv="Pieraksts" data-ru="Запись"></h3><p data-lv="Uzrakstiet WhatsApp vai piezvaniet." data-ru="Напишите в WhatsApp или позвоните."></p></div>
+      <div class="step reveal"><div class="n">2</div><h3 data-lv="Konsultācija" data-ru="Консультация"></h3><p data-lv="Izvērtējam ādu un jūsu vēlmes." data-ru="Оцениваем кожу и ваши пожелания."></p></div>
+      <div class="step reveal"><div class="n">3</div><h3 data-lv="Procedūra" data-ru="Процедура"></h3><p data-lv="Mierīgā atmosfērā, ar profesionālo kosmētiku." data-ru="В спокойной атмосфере, с проф. косметикой."></p></div>
+      <div class="step reveal"><div class="n">4</div><h3 data-lv="Mājas kopšana" data-ru="Домашний уход"></h3><p data-lv="Ieteikumi, kā saglabāt rezultātu." data-ru="Рекомендации, как сохранить результат."></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow" data-lv="Kabinets un darbi" data-ru="Кабинет и работы"></div>
+      <h2 data-lv="Atmosfēra un rezultāti" data-ru="Атмосфера и результаты"></h2>
+    </div>
+    <div class="gallery reveal">
+      <div class="g g1"><span data-lv="Kabineta foto" data-ru="Фото кабинета"></span></div>
+      <div class="g g2"><span data-lv="Procedūras foto" data-ru="Фото процедуры"></span></div>
+      <div class="g g3"><span data-lv="Kosmētika" data-ru="Косметика"></span></div>
+      <div class="g g4"><span data-lv="Rezultāts (ar klientes atļauju)" data-ru="Результат (с согласия клиентки)"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow" data-lv="Jautājumi" data-ru="Вопросы"></div>
+      <h2 data-lv="Bieži uzdotie jautājumi" data-ru="Частые вопросы"></h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary data-lv="Kuru procedūru man izvēlēties?" data-ru="Какую процедуру мне выбрать?"></summary><p data-lv="Nav jāizvēlas iepriekš — konsultācijā apskatīsim ādu un kopā izlemsim, kas jums der vislabāk." data-ru="Заранее выбирать не нужно — на консультации посмотрим кожу и вместе решим, что подойдёт лучше всего."></p></details>
+      <details><summary data-lv="Vai pīlings ir sāpīgs?" data-ru="Пилинг — это больно?"></summary><p data-lv="Sajūtas atkarīgas no pīlinga veida un ādas. Pirms procedūras es izstāstīšu, ko sagaidīt." data-ru="Ощущения зависят от вида пилинга и кожи. Перед процедурой я расскажу, чего ожидать."></p></details>
+      <details><summary data-lv="Cik bieži jānāk?" data-ru="Как часто нужно приходить?"></summary><p data-lv="Tas atkarīgs no mērķa. Biežumu un kursa ilgumu noteiksim konsultācijā." data-ru="Это зависит от цели. Частоту и длительность курса определим на консультации."></p></details>
+      <details><summary data-lv="Kādās valodās var sazināties?" data-ru="На каких языках можно общаться?"></summary><p data-lv="Latviešu un krievu valodā." data-ru="На латышском и русском."></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2 data-lv="Pirmais solis — konsultācija" data-ru="Первый шаг — консультация"></h2>
+      <p data-lv="Uzrakstiet man WhatsApp, un mēs atradīsim jums ērtu laiku." data-ru="Напишите мне в WhatsApp, и мы найдём удобное для вас время."></p>
+      <a class="btn" href="https://wa.me/37125984948" target="_blank"><span data-lv="Rakstīt WhatsApp" data-ru="Написать в WhatsApp"></span> →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow" data-lv="Kontakti" data-ru="Контакты"></div>
+      <h2 data-lv="Gaidu jūs" data-ru="Жду вас"></h2>
+      <ul class="clist">
+        <li><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><small data-lv="Adrese" data-ru="Адрес"></small>Ģertrūdes iela 99, Rīga, LV-1021</div></li>
+        <li><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><div><small data-lv="Tālrunis / WhatsApp" data-ru="Телефон / WhatsApp"></small><a href="tel:+37125984948">+371 25984948</a></div></li>
+        <li><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#9a5f4a"/></svg></div><div><small>Instagram</small><a href="https://instagram.com/beautyspecialist_arina" target="_blank">@beautyspecialist_arina</a></div></li>
+        <li><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a5f4a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><small data-lv="Darba laiks" data-ru="Часы работы"></small><span data-lv="Pēc pieraksta" data-ru="По записи"></span></div></li>
+      </ul>
+      <a class="btn" href="https://wa.me/37125984948" target="_blank" data-lv="Pierakstīties" data-ru="Записаться"></a>
+    </div>
+    <iframe class="reveal" loading="lazy" src="https://www.google.com/maps?q=%C4%A2ertr%C5%ABdes+iela+99,+R%C4%ABga&output=embed" title="Map"></iframe>
+  </div>
+</section>
+
+<footer>
+  <span class="logo">CUT<span style="color:var(--rose)">É</span></span>
+  <span data-lv="© Arina Antonjana · Demo, izstrādāja Rolands Knostenbergs" data-ru="© Арина Антонян · Демо, разработал Rolands Knostenbergs"></span>
+</footer>
+
+<a class="wa" href="https://wa.me/37125984948" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.2 1.4 2.5 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script>
+  var words = {
+    lv:["Aparātu procedūras","Pīlingi","Sejas kopšana","Konsultācijas","Reviderm","Veselīga āda"],
+    ru:["Аппаратные процедуры","Пилинги","Уходы за лицом","Консультации","Reviderm","Здоровая кожа"]
+  };
+  function setLang(l){
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-lv]').forEach(function(el){ el.textContent = el.getAttribute('data-' + l); });
+    document.querySelectorAll('[data-html-lv]').forEach(function(el){ el.innerHTML = el.getAttribute('data-html-' + l); });
+    var t = document.getElementById('track'), list = words[l].concat(words[l]).concat(words[l]).concat(words[l]);
+    t.innerHTML = list.map(function(w){ return '<span>' + w + '</span>'; }).join('');
+    document.getElementById('btn-lv').classList.toggle('active', l === 'lv');
+    document.getElementById('btn-ru').classList.toggle('active', l === 'ru');
+  }
+  setLang('lv');
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el, i){ el.style.transitionDelay = (i % 4) * 0.08 + 's'; io.observe(el); });
+
+  window.addEventListener('scroll', function(){
+    document.getElementById('hdr').classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+</body>
+</html>
