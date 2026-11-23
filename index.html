@@ -167,8 +167,11 @@
   @media(max-width:900px){
     .hero h1{font-size:44px}
     .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-    .hero-visual{max-width:360px;margin:20px auto 0}
-    .float-card.fc1{left:-10px}.float-card.fc2{right:-10px}
+    .hero-visual{max-width:360px;margin:20px auto 0;display:flex;flex-direction:column;gap:12px}
+    .arch{width:100%}
+    .float-card{position:static;animation:none;box-shadow:0 8px 22px rgba(58,42,37,.08)}
+    .badges{gap:16px}
+    .about-photo{aspect-ratio:4/3}
     .services{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr 1fr;row-gap:40px}
     .steps::before{display:none}
